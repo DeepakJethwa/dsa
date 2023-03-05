@@ -1,0 +1,31 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static int findMax(int arr[],int n){
+        int temp1,temp2;
+        int max1=Integer.MIN_VALUE,max2=Integer.MIN_VALUE;
+        int min1=Integer.MAX_VALUE,min2=Integer.MAX_VALUE;
+        for(int i=0;i<n;i++){
+            temp1=arr[i]+i;
+            temp2=arr[i]-i;
+            max1=Math.max(max1,temp1);
+            min1=Math.min(min1,temp1);
+            max2=Math.max(max2,temp2);
+            min2=Math.min(min2,temp2);
+        }
+        return Math.max((max1-min1),(max2-min2));
+            }
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+     System.out.println(findMax(arr,n) +"\n");
+    } 
+}

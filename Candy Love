@@ -1,0 +1,39 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static long equationSolver(long a,long b,long mid){
+        long temp=mid;
+        long count=0;
+        while(temp>0){
+            count++;
+            temp=temp/10;
+        }
+        return a*mid+b*count;
+    }
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        long a=sc.nextLong();
+        long b=sc.nextLong();
+        long t=sc.nextLong();
+        long s=1;
+        long e=(long)1e9;
+        while(s<=e){
+            long mid=s+(e-s)/2;
+            long ans=equationSolver(a,b,mid);
+            if(ans<=t){
+                s=mid+1;
+            }else{
+                e=mid-1;
+            }
+        }
+        if(equationSolver(a,b,e)<=t){
+            System.out.println(e);
+            return;
+        }
+        System.out.println(s);
+    }
+}

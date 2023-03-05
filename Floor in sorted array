@@ -1,0 +1,40 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static int search(int arr[],int low,int high,int k){
+        if(low>high)
+        return -1;
+        if(k>=arr[high])
+        return high;
+        int mid=(low+high)/2;
+        if(arr[mid]==k)
+        return mid;
+        if(mid>0 && arr[mid-1]<=k && k<arr[mid])
+        return mid-1;
+        if(k<arr[mid])
+        return search(arr,low,mid-1,k);
+
+        return search(arr,mid+1,high,k);
+    }
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        while(t-->0){
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        int ind=search(arr,0,n-1,k);
+        if(ind==-1)
+        System.out.println("-1");
+        else
+        System.out.println(ind);
+        }
+    }
+}

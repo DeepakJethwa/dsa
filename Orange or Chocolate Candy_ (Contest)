@@ -1,0 +1,78 @@
+Problem Statement
+Pino is super fond of candies. Today she has A chocolate candies, B orange candies, and C unknown candies. You are also given the happiness she gets after eating a particular candy.
+She wants to have exactly X chocolate candies and Y orange candies. She can transform an unknown candy to a candy of any type (chocolate or orange).
+Find the maximum happiness she can attain.
+
+
+
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        int X=sc.nextInt();
+        int Y=sc.nextInt();
+        int A=sc.nextInt();
+        int B=sc.nextInt();
+        int C=sc.nextInt();
+        int ch[]=new int[A];
+        int or[]=new int[B];
+        int un[]=new int[C];
+        int temp[]=new int[X+Y];
+        for(int i=0;i<A;i++)
+        {
+            ch[i]=sc.nextInt();
+
+        }
+        for(int i=0;i<B;i++)
+        {
+            or[i]=sc.nextInt();
+        }
+        for(int i=0;i<C;i++)
+        {
+            un[i]=sc.nextInt();
+        }
+
+        Arrays.sort(ch);
+        Arrays.sort(or);
+        Arrays.sort(un);
+        Arrays.sort(temp);
+        int ptr=0;
+
+        for(ptr=0;ptr<X;ptr++)
+        {
+            temp[ptr]=ch[A-1-ptr];
+        }
+
+        int ptr1=0;
+        for(int i=ptr;i<ptr+Y;i++)
+        {
+            temp[i]=or[B-1-ptr1];
+            ptr1++;
+        }
+        Arrays.sort(temp);
+
+        long sum=0;
+        int ptr2=un.length-1;
+        int ptr3=temp.length-1;
+
+        for(int i=0;i<(X+Y);i++)
+        {
+            if(temp[ptr3]>un[ptr2])
+            {
+                sum+=temp[ptr3];
+                ptr3--;
+            }
+            else{
+                sum+=un[ptr2];
+                ptr2--;
+            }
+        }
+        System.out.println(sum);
+    }
+}

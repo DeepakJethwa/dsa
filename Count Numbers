@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> // header file includes every Standard library
+#define rep(i,n) for(int i=0;i<n;i++)
+using namespace std;
+using ll=long long;
+int ans=0;
+int n=0;
+int ok;
+void dfs(ll x,int ok){
+    if(x>n) return;
+    if(ok==7) ans++;
+    dfs(x*10+3,ok|1);
+    dfs(x*10+4,ok|2);
+    dfs(x*10+5,ok|4);
+    return;
+}
+
+int main() {
+	// Your code here
+    cin>>n;
+    int x=0;
+    dfs(x,0);
+
+    cout<<ans<<endl;
+    return 0;
+}
