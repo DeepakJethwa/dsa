@@ -1,7 +1,0 @@
-static int candies(int X, int Y){
-if(Y>=X)
-  return 1;
-else
-  return 0;
-}
-
